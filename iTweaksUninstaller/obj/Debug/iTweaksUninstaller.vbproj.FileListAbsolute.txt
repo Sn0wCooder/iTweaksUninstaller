@@ -24,3 +24,16 @@ C:\Users\Leonardo\Desktop\iTweaksUninstaller_\iTweaksUninstaller\obj\Debug\iTwea
 C:\Users\Leonardo\Desktop\iTweaksUninstaller_\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.Form1.resources
 C:\Users\Leonardo\Desktop\iTweaksUninstaller_\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.Resources.resources
 C:\Users\Leonardo\Desktop\iTweaksUninstaller_\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.vbproj.GenerateResource.Cache
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\bin\Debug\iTweaksUninstaller.exe.config
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.exe
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.xml
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.pdb
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\bin\Debug\iTweaksUninstaller.exe
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\bin\Debug\iTweaksUninstaller.pdb
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\bin\Debug\iTweaksUninstaller.xml
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\bin\Debug\Renci.SshNet.dll
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.vbprojResolveAssemblyReference.cache
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.Done.resources
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.Form1.resources
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.Resources.resources
+C:\Users\Leonardo\Documents\iTweaksUninstaller\iTweaksUninstaller\obj\Debug\iTweaksUninstaller.vbproj.GenerateResource.Cache

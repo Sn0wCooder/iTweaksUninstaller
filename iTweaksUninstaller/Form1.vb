@@ -1,23 +1,28 @@
 ﻿Imports System.Net
 Imports System.Management
+Imports System.IO.Compression
+
 Public Class Form1
     Public da As String = My.Computer.FileSystem.SpecialDirectories.CurrentUserApplicationData & "\"
     Dim WithEvents client As New WebClient
-    Public CurrentVersionInteger As Integer = 1
-    Public CurrentVersion As String = "1.0"
+    Public CurrentVersionInteger As Integer = 2
+    Public CurrentVersion As String = "1.1"
     Dim Errors As Boolean
     Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles Me.FormClosing
         If ControlBox = False Then
             e.Cancel = True
         Else
             End_SSH_Over_USB()
-            CleanUpResources()
+            'CleanUpResources()
         End If
     End Sub
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Me.CheckForIllegalCrossThreadCalls = False
         Me.Text = "iTweaksUninstaller v." & CurrentVersion.ToString
         Updater()
+        CreateTempFolder()
+        Download_iproxy()
+        CheckForRenciDLL()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs)
@@ -69,6 +74,16 @@ Public Class Form1
         Process.Start("http://twitter.com/Sn0wCooder")
     End Sub
 
+    Public Sub Download_iproxy()
+        If Not IO.Directory.Exists(da & "libimobiledevice") Then
+            MsgBox("Downloading iproxy (only for the first time). It will take a while!", MsgBoxStyle.Information, "Warning")
+            client.DownloadFile(New Uri("https://github.com/Sn0wCooder/libimobiledevice-compiled-windows/archive/master.zip"), da & "libimobiledevice.zip")
+            ZipFile.ExtractToDirectory(da & "libimobiledevice.zip", da)
+            IO.File.Delete(da & "libimobiledevice.zip")
+            My.Computer.FileSystem.RenameDirectory(da & "libimobiledevice-compiled-windows-master", "libimobiledevice")
+        End If
+    End Sub
+
     Private Sub BackgroundWorker1_DoWork(sender As Object, e As System.ComponentModel.DoWorkEventArgs) Handles BackgroundWorker1.DoWork
         Call DetectDeviceTimer.Stop()
         Call DetectDeviceBackgroundWorker.CancelAsync()
@@ -78,7 +93,6 @@ Public Class Form1
             If Not MessageBox.Show("Do you really want to continue?", "Warning", MessageBoxButtons.OKCancel, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1) = Windows.Forms.DialogResult.Cancel Then
                 pb.Value = 20
                 StatusLabel.Text = "Status: 20% - trying to start a SSH connection over USB..."
-                CopyFilesitunnel_mux()
                 End_SSH_Over_USB()
                 SSH_Over_USB("22", "22")
                 Dim connInfo As New Renci.SshNet.PasswordConnectionInfo("127.0.0.1", "root", "alpine")

@@ -47,30 +47,30 @@ Module Module1
         End If
     End Sub
 
-    Public Sub CleanUpResources()
-        End_SSH_Over_USB()
-        If My.Computer.FileSystem.DirectoryExists(da) Then
-            My.Computer.FileSystem.DeleteDirectory(da, FileIO.DeleteDirectoryOption.DeleteAllContents)
-        End If
-    End Sub
-    Public Sub itunnel_mux(args As String)
-        Dim itunnel_mux_p As New Process()
+    'Public Sub CleanUpResources()
+    '   End_SSH_Over_USB()
+    '   If My.Computer.FileSystem.DirectoryExists(da) Then
+    '       My.Computer.FileSystem.DeleteDirectory(da, FileIO.DeleteDirectoryOption.DeleteAllContents)
+    '    End If
+    'End Sub
+    Public Sub iproxy(args As String)
+        Dim iproxy As New Process()
         Try
-            itunnel_mux_p.StartInfo.UseShellExecute = False
-            itunnel_mux_p.StartInfo.FileName = Form1.da + "itunnel_mux.exe"
-            itunnel_mux_p.StartInfo.Arguments = args
-            itunnel_mux_p.StartInfo.CreateNoWindow = True
-            itunnel_mux_p.Start()
+            iproxy.StartInfo.UseShellExecute = False
+            iproxy.StartInfo.FileName = Form1.da + "libimobiledevice\iproxy.exe"
+            iproxy.StartInfo.Arguments = args
+            iproxy.StartInfo.CreateNoWindow = True
+            iproxy.Start()
         Catch ex As Exception
         End Try
     End Sub
 
     Public Sub SSH_Over_USB(iport As String, lport As String)
-        itunnel_mux("--iport " + iport + " --lport " + lport)
+        iproxy(iport + " " + lport)
     End Sub
 
     Public Sub End_SSH_Over_USB()
-        Kill({"itunnel_mux"})
+        Kill({"iproxy"})
     End Sub
 
     Public Sub Kill(ProcessesList As String())
@@ -143,19 +143,7 @@ Module Module1
             Return False
         End If
     End Function
-    
 
-    Public Sub CopyFilesitunnel_mux()
-        End_SSH_Over_USB()
-        If System.IO.File.Exists(da & "itunnel_mux.exe") Then
-            System.IO.File.Delete(da & "itunnel_mux.exe")
-        End If
-        If System.IO.File.Exists(da & "libMobiledevice.dll") Then
-            System.IO.File.Delete(da & "libMobiledevice.dll")
-        End If
-        My.Computer.FileSystem.WriteAllBytes(da & "itunnel_mux.exe", My.Resources.itunnel_mux, True)
-        My.Computer.FileSystem.WriteAllBytes(da & "libMobiledevice.dll", My.Resources.libMobiledevice, True)
-    End Sub
     Public Function CheckForInternetConnection() As Boolean
         Try
             Using client = New WebClient()
